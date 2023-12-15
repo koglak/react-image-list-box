@@ -8,7 +8,7 @@ export const imagesData = [
         filename: '2.jpg'
     },
     {
-        src: 'https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/07/top-20-small-dog-breeds.jpeg.jpg',
+        src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg',
         filename: '3.jpg'
     },
     {
