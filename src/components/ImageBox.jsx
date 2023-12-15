@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import '../styles/ImageBox.css'
+import Pagination from './Pagination';
 
 const ImageBox = ({ images }) => {
+
+  const [currentPage, setCurrentPage] = React.useState(1)
 
   return (
     <div className='image-box'>
@@ -13,8 +16,9 @@ const ImageBox = ({ images }) => {
           </div>
         ))}
       </div>
-    </div>
 
+      <Pagination numOfPage={5} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+    </div>
   );
 };
 

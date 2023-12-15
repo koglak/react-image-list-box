@@ -1,0 +1,61 @@
+.pagination-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    border-top: 1px solid black;
+    padding: 5px;
+    color: white; /* Set text color to white */
+    background-color: black; /* Set background color to black */
+}
+
+.pagination-box a, .pagination-box button {
+    color: white; /* Set link/button text color to white */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 10px; /* Add horizontal spacing around links/buttons */
+}
+
+.pagination-box button {
+    background: none; /* Remove button background */
+    border: none; /* Remove button border */
+    cursor: pointer;
+}
+
+.pagination-box button:disabled {
+    color: grey; /* Set a different color for disabled buttons */
+    cursor: default;
+}
+
+/* Add specific styles for the current page indicator */
+.pagination-box .current-page {
+    border: none;
+    background: white;
+    color: black;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+
+/* Existing styles ... */
+
+/* Styles for the dropdown */
+.current-page-dropdown {
+    color: black; /* Text color */
+    background-color: white; /* Background color */
+    border: 1px solid black; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    padding: 2px 6px; /* Padding */
+    margin: 0 5px; /* Margin */
+    width: 50px;
+    -webkit-appearance: none; /* Removes default styling on Webkit browsers */
+    -moz-appearance: none; /* Removes default styling on Firefox */
+    appearance: none; /* Removes default styling */
+}
+
+/* You may need to add custom arrow indicators for the dropdown */
+.current-page-dropdown {
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 5px top 50%;
+    background-size: 12px;
+}
