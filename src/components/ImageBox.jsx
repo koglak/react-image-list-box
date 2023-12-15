@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import '../styles/ImageBox.css'
+import '../styles/ImageBox.css';
 import Pagination from './Pagination';
 
-const ImageBox = ({ images }) => {
+const ImageBox = ({ images, perPage }) => {
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const [currentPage, setCurrentPage] = React.useState(1)
+  // Calculate the index of the first and last image on the current page
+  const indexOfLastImage = currentPage * perPage;
+  const indexOfFirstImage = indexOfLastImage - perPage;
+  const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
   return (
     <div className='image-box'>
       <div className="image-grid">
-        {images.map((image, index) => (
+        {currentImages.map((image, index) => (
           <div key={index} className="image-item">
             <img src={image.src} alt={image.filename} style={{ width: '100px', height: '100px' }} />
             <div>{image.filename}</div>
@@ -17,7 +21,11 @@ const ImageBox = ({ images }) => {
         ))}
       </div>
 
-      <Pagination numOfPage={5} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+      <Pagination 
+        numOfPage={Math.ceil(images.length / perPage)} 
+        currentPage={currentPage} 
+        setCurrentPage={setCurrentPage}
+      />
     </div>
   );
 };
