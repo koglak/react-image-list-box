@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <h5>React Image List Box</h5>
-      <ImageBox images={imagesData} perPage={5} />
+      <ImageBox initialImages={imagesData} perPage={5} />
     </div>
   );
 }
