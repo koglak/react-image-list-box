@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import '../styles/ImageBox.css';
 import Pagination from './Pagination';
 
-const ImageBox = ({ initialImages, perPage }) => {
-  const [images, setImages] = useState(initialImages); // State to hold images
+const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight }) => {
+  const [images, setImages] = useState(initialImages);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Calculate the indices for the current page's images
   const indexOfLastImage = currentPage * perPage;
   const indexOfFirstImage = indexOfLastImage - perPage;
   const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
+  // Handler for deleting an image
   const handleDelete = (indexToDelete) => {
     const actualIndex = indexOfFirstImage + indexToDelete;
     const filteredImages = images.filter((_, index) => index !== actualIndex);
     setImages(filteredImages);
-
     if (currentPage > 1 && filteredImages.length <= indexOfFirstImage) {
       setCurrentPage(currentPage - 1);
     }
@@ -27,11 +28,15 @@ const ImageBox = ({ initialImages, perPage }) => {
           <div key={index} className="image-item">
             <button 
               className="image-item-button" 
-              onClick={() => handleDelete(index)} // Use the index within the currentImages array
+              onClick={() => handleDelete(index)}
             >
               Delete
             </button>
-            <img src={image.src} alt={image.filename} style={{ width: '200px', height: '200px' }} />
+            <img 
+              src={image.src} 
+              alt={image.filename} 
+              style={{ width: `${imageWidth}px`, height: `${imageHeight}px` }} 
+            />
             <div>{image.filename}</div>
           </div>
         ))}
