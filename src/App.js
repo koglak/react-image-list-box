@@ -12,7 +12,10 @@ function App() {
       initialImages={imagesData} 
       perPage={5}
       imageWidth={200}
-      imageHeight={200} />
+      imageHeight={200} 
+      boxWidth={"auto"}
+      boxHeight={"auto"}
+      />
     </div>
   );
 }

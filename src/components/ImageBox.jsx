@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/ImageBox.css';
 import Pagination from './Pagination';
 
-const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight }) => {
+const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight }) => {
   const [images, setImages] = useState(initialImages);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -22,10 +22,10 @@ const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight }) => {
   };
 
   return (
-    <div className='image-box'>
+    <div className='image-box'  style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
       <div className="image-grid">
         {currentImages.map((image, index) => (
-          <div key={index} className="image-item">
+          <div key={index} className="image-item" >
             <button 
               className="image-item-button" 
               onClick={() => handleDelete(index)}
