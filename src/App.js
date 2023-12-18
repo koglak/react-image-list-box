@@ -19,6 +19,8 @@ function App() {
         imageHeight={200}
         boxWidth={"auto"}
         boxHeight={"auto"}
+        enableCheckBox={true}
+        enableDelete={true}
       />
     </div>
   );

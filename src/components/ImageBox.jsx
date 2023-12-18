@@ -6,7 +6,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import Pagination from './Pagination';
 import Settings from './Settings'
 
-const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight }) => {
+const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight, enableCheckBox, enableDelete }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calculate the indices for the current page's images
@@ -14,7 +14,7 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
   const indexOfFirstImage = indexOfLastImage - perPage;
   const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
-  const [selectedImages, setSelectedImages] = useState([]); 
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const toggleSelectImage = (imageName) => {
     setSelectedImages(prevSelectedImages => {
@@ -37,26 +37,29 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
 
   return (
     <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
-      <Settings numSelectedImages={selectedImages.length}/>
+      <Settings numSelectedImages={selectedImages.length} />
 
       <div className="image-grid">
         {currentImages.map((image, index) => (
           <div key={index} className="image-item" >
-            <input
+            {
+              enableCheckBox && <input
                 type="checkbox"
                 className="image-checkbox"
-                checked={selectedImages.includes(image.filename)} 
-                onChange={() => toggleSelectImage(image.filename)} 
-                id={`checkbox-${index}`} 
+                checked={selectedImages.includes(image.filename)}
+                onChange={() => toggleSelectImage(image.filename)}
+                id={`checkbox-${index}`}
               />
+            }
 
-            <button
+            {enableDelete && <button
               className="image-item-button"
               onClick={() => handleDelete(index)}
               title="Delete Image"
             >
               <RiDeleteBin5Line size={20} />
-            </button>
+            </button>}
+
             <img
               src={image.src}
               alt={image.filename}
