@@ -4,8 +4,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 
 import Pagination from './Pagination';
 
-const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight }) => {
-  const [images, setImages] = useState(initialImages);
+const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   // Calculate the indices for the current page's images
