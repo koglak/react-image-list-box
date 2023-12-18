@@ -29,11 +29,19 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
   const handleDelete = (indexToDelete) => {
     const actualIndex = indexOfFirstImage + indexToDelete;
     const filteredImages = images.filter((_, index) => index !== actualIndex);
+    const imageNameToDelete = images[actualIndex].filename; // Get the name of the image to delete
+  
     setImages(filteredImages);
+  
+    setSelectedImages(prevSelectedImages => 
+      prevSelectedImages.filter(name => name !== imageNameToDelete)
+    );
+  
     if (currentPage > 1 && filteredImages.length <= indexOfFirstImage) {
       setCurrentPage(currentPage - 1);
     }
   };
+  
 
   return (
     <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
