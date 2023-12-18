@@ -5,12 +5,11 @@
     margin: 0px;
     border-top: 1px solid black;
     padding: 5px;
-    color: white; /* Set text color to white */
-    background-color: black; /* Set background color to black */
+    color: black; /* Set text color to white */
 }
 
 .pagination-box a, .pagination-box button {
-    color: white; /* Set link/button text color to white */
+    color: black; /* Set link/button text color to white */
     text-decoration: none; /* Remove underline from links */
     margin: 0 10px; /* Add horizontal spacing around links/buttons */
 }

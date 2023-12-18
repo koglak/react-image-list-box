@@ -21,7 +21,7 @@ function Pagination({ currentPage, numOfPage, setCurrentPage }) {
 
     return (
         <div className='pagination-box'>
-            <button onClick={handlePrevClick} disabled={currentPage === 1}>&lt; Prev</button>
+            <button onClick={handlePrevClick} disabled={currentPage === 1}>&lt;&lt; Prev</button>
             
             {/* Dropdown for selecting the current page */}
             <select
@@ -37,7 +37,7 @@ function Pagination({ currentPage, numOfPage, setCurrentPage }) {
             </select> 
             of {numOfPage}
             
-            <button onClick={handleNextClick} disabled={currentPage === numOfPage}>Next &gt;</button>
+            <button onClick={handleNextClick} disabled={currentPage === numOfPage}>Next &gt;&gt;</button>
         </div>
     );
 }
