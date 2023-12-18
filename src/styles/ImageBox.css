@@ -19,22 +19,50 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    border: 1px solid black
+    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+    box-sizing: border-box;
+    overflow: hidden; /* Ensures that the scaling doesn't affect the overall layout */
+}
+
+.image-item {
+    position: relative;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden; /* Ensures that the scaling doesn't affect the overall layout */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
+    border: 5px solid transparent; /* Invisible border to maintain layout */
 }
 
 .image-item img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: auto;
     object-fit: cover;
+    transition: transform 0.3s ease; /* Smooth transition for transform */
+}
+
+.image-item:hover {
+    transform: scale(1.05); /* Scales up the item */
+    z-index: 1; /* Ensure the scaled item is above other elements */
 }
 
 .image-item-button {
-    position: absolute; 
-    top: 2px; 
-    right: 2px; 
-    color: white;
-    background-color: black; 
-    border: none; 
-    border-radius: 5px; 
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
+    transition: opacity 0.3s ease; /* Transition for the button appearance */
+    opacity: 0; /* Button is initially invisible */
+    z-index: 2; /* Ensure the button is above the image */
+}
+
+.image-item:hover .image-item-button {
+    opacity: 1; /* Button becomes visible on hover */
 }
