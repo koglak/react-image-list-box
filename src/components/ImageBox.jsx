@@ -4,6 +4,7 @@ import '../styles/ImageBox.css';
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 import Pagination from './Pagination';
+import Settings from './Settings'
 
 const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,6 +25,7 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
       }
     });
   };
+
   const handleDelete = (indexToDelete) => {
     const actualIndex = indexOfFirstImage + indexToDelete;
     const filteredImages = images.filter((_, index) => index !== actualIndex);
@@ -33,12 +35,9 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
     }
   };
 
-
   return (
     <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
-      <div >
-        <p>{selectedImages.length} Images Selected</p>
-      </div>
+      <Settings numSelectedImages={selectedImages.length}/>
 
       <div className="image-grid">
         {currentImages.map((image, index) => (

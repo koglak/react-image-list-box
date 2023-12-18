@@ -1,0 +1,14 @@
+.settings-box {
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.settings-title {
+    display: flex; 
+    align-items: center; 
+    gap: 10px;
+}
+
+.settings-title h2 {
+    margin: 0; 
+}
