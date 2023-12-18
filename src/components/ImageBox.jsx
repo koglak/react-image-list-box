@@ -73,7 +73,7 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
               alt={image.filename}
               style={{ width: `${imageWidth}px`, height: `${imageHeight}px` }}
             />
-            <div>{image.filename}</div>
+            <div className='image-label'>{image.filename}</div>
           </div>
         ))}
       </div>
