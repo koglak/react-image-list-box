@@ -21,7 +21,12 @@ function App() {
         boxHeight={"auto"}
         enableCheckBox={true}
         enableDelete={true}
-      />
+        rootStyle={{ 
+          backgroundColor: 'white', 
+          border: '1px solid black',
+          borderRadius: "5px"
+        }} 
+        />
     </div>
   );
 }

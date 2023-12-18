@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { RiDeleteBin5Line } from "react-icons/ri";
-import '../styles/ImageBox.css'
+import '../styles/ImageGrid.css'
 
 const ImageGrid = ({ images, setImages, perPage, currentPage, setCurrentPage, imageWidth, imageHeight, enableCheckBox, enableDelete, selectedImages, setSelectedImages }) => {
 

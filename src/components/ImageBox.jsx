@@ -4,12 +4,12 @@ import Pagination from './Pagination';
 import Settings from './Settings'
 import ImageGrid from './ImageGrid';
 
-const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight, enableCheckBox, enableDelete }) => {
+const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight, enableCheckBox, enableDelete, rootStyle   }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImages, setSelectedImages] = useState([]);
 
   return (
-    <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
+    <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px`, ...rootStyle }}>
       <Settings numSelectedImages={selectedImages.length} />
 
       <ImageGrid
