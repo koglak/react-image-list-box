@@ -13,10 +13,12 @@ function Settings({ numSelectedImages }) {
                 <IoImagesOutline size={20} /> <h2>Images</h2>
             </div>
 
-            <p>{numSelectedImages} Images Selected</p>
-            <button className='btn btn-primary' onClick={()=>setIsClassVisible(true)}>Assign Class</button>
+            <div className='d-flex text-end'>
+                <p>{numSelectedImages} Images Selected</p>
+                <button className='btn btn-primary' onClick={() => setIsClassVisible(true)}>Assign Class</button>
+            </div>
 
-            <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible}/>
+            <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} />
 
         </div>);
 }
