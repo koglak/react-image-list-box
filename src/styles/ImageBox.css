@@ -74,3 +74,49 @@
 .image-item:hover .image-item-button {
     opacity: 1; /* Button becomes visible on hover */
 }
+
+.image-checkbox {
+    -webkit-appearance: none; /* Removes default styling for Webkit browsers */
+    -moz-appearance: none; /* Removes default styling for Firefox */
+    appearance: none; /* Removes default styling */
+    position: absolute;
+    top: 0; /* Align the top edge of the checkbox to the vertical middle */
+    left: 0; /* Align to the left edge of the image-item */
+    opacity: 0; /* Hidden by default */
+    z-index: 2; /* Ensure the checkbox is above the image */
+    border: 2px solid #ccc; /* Custom border for the checkbox */
+    background-color: #fff; /* Background color when not checked */
+    width: 20px; /* Set a specific width for the checkbox */
+    height: 20px; /* Set a specific height for the checkbox */
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for colors */
+}
+
+/* Always show the checkbox if it's checked, regardless of hover state */
+.image-checkbox:checked {
+    opacity: 1;
+    background-color: black; /* Background color when checked */
+    border-color: black; /* Border color when checked */
+}
+
+/* Show the checkbox on hover of the .image-item container */
+.image-item:hover .image-checkbox {
+    opacity: 1; /* Show checkbox on hover */
+}
+
+.image-checkbox:checked::after {
+    content: '✔'; /* Unicode character for the checkmark */
+    color: white; /* Checkmark color */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px; /* Adjust size accordingly */
+    line-height: 1;
+}
+
+.image-item:hover .image-checkbox,
+.image-item .image-checkbox:checked {
+    opacity: 1; /* Show checkbox on hover and when checked */
+}
+

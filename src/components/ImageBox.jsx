@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/ImageBox.css';
+
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 import Pagination from './Pagination';
@@ -12,7 +13,17 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
   const indexOfFirstImage = indexOfLastImage - perPage;
   const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
 
-  // Handler for deleting an image
+  const [selectedImages, setSelectedImages] = useState([]); 
+
+  const toggleSelectImage = (imageName) => {
+    setSelectedImages(prevSelectedImages => {
+      if (prevSelectedImages.includes(imageName)) {
+        return prevSelectedImages.filter(name => name !== imageName);
+      } else {
+        return [...prevSelectedImages, imageName];
+      }
+    });
+  };
   const handleDelete = (indexToDelete) => {
     const actualIndex = indexOfFirstImage + indexToDelete;
     const filteredImages = images.filter((_, index) => index !== actualIndex);
@@ -22,22 +33,35 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
     }
   };
 
+
   return (
-    <div className='image-box'  style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
+    <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }}>
+      <div >
+        <p>{selectedImages.length} Images Selected</p>
+      </div>
+
       <div className="image-grid">
         {currentImages.map((image, index) => (
           <div key={index} className="image-item" >
-            <button 
-              className="image-item-button" 
+            <input
+                type="checkbox"
+                className="image-checkbox"
+                checked={selectedImages.includes(image.filename)} 
+                onChange={() => toggleSelectImage(image.filename)} 
+                id={`checkbox-${index}`} 
+              />
+
+            <button
+              className="image-item-button"
               onClick={() => handleDelete(index)}
-              title="Delete Image" 
+              title="Delete Image"
             >
               <RiDeleteBin5Line size={20} />
             </button>
-            <img 
-              src={image.src} 
-              alt={image.filename} 
-              style={{ width: `${imageWidth}px`, height: `${imageHeight}px` }} 
+            <img
+              src={image.src}
+              alt={image.filename}
+              style={{ width: `${imageWidth}px`, height: `${imageHeight}px` }}
             />
             <div>{image.filename}</div>
           </div>
