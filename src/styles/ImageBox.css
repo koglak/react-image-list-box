@@ -53,14 +53,22 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #f0f0f0;
+    background-color: black;
+    color: white; /* Example background color */
     border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
+    border-radius: 50%; /* Makes the button circular */
+    padding: 5px; /* Adjust padding to size the button */
     cursor: pointer;
     transition: opacity 0.3s ease; /* Transition for the button appearance */
     opacity: 0; /* Button is initially invisible */
     z-index: 2; /* Ensure the button is above the image */
+    display: flex; /* To center the content inside the button */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 30px; /* Example width */
+    height: 30px; /* Example height */
+    font-size: 16px; /* Adjust as needed */
+    line-height: 1; /* Adjust line height to ensure the text is centered if needed */
 }
 
 .image-item:hover .image-item-button {

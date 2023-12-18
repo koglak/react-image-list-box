@@ -31,6 +31,7 @@ const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight, boxWidth, b
             <button 
               className="image-item-button" 
               onClick={() => handleDelete(index)}
+              title="Delete Image" 
             >
               <RiDeleteBin5Line size={20} />
             </button>
