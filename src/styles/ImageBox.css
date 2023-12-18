@@ -29,12 +29,12 @@
 }
 
 .image-item-button {
-    position: absolute; /* Position the button absolutely within the .image-item */
-    top: 5px; /* Adjust as needed */
-    right: 5px; /* Adjust as needed */
-    background-color: #f0f0f0; /* Example background color */
-    border: none; /* Adjust according to your design */
-    border-radius: 5px; /* Optional for rounded corners */
-    padding: 5px 10px; /* Adjust as needed */
+    position: absolute; 
+    top: 2px; 
+    right: 2px; 
+    color: white;
+    background-color: black; 
+    border: none; 
+    border-radius: 5px; 
     cursor: pointer;
 }

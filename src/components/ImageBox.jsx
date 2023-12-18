@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/ImageBox.css';
+import { RiDeleteBin5Line } from "react-icons/ri";
+
 import Pagination from './Pagination';
 
 const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight }) => {
@@ -30,7 +32,7 @@ const ImageBox = ({ initialImages, perPage, imageWidth, imageHeight, boxWidth, b
               className="image-item-button" 
               onClick={() => handleDelete(index)}
             >
-              Delete
+              <RiDeleteBin5Line size={20} />
             </button>
             <img 
               src={image.src} 
