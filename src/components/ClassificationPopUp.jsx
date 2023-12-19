@@ -8,7 +8,7 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
     const [selectedTags, setSelectedTags] = React.useState([]);
     const [tagInput, setTagInput] = React.useState('');
 
-    const { selectedImages, setImages, images } = React.useContext(ImageContext);
+    const { selectedImages, setImages, images, filteredImages, setFilteredImages } = React.useContext(ImageContext);
 
     const addTag = () => {
         if (tagInput && !selectedTags.some(tag => tag.value.toLowerCase() === tagInput.toLowerCase())) {
@@ -28,7 +28,17 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
                 return image;
             });
 
+            const updatedImages_filtered = filteredImages.map(image => {
+                if (selectedImages.includes(image.filename)) {
+                    if (!image.categories.includes(newTag.value)) {
+                        return { ...image, categories: [...image.categories, newTag.value] };
+                    }
+                }
+                return image;
+            });
+
             setImages(updatedImages);
+            setFilteredImages(updatedImages_filtered)
 
             setTagInput('');
         }
@@ -54,6 +64,16 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
             }
             return image;
         });
+
+        const updatedImages_filtered = filteredImages.map(image => {
+            if (selectedImages.includes(image.filename)) {
+                const updatedCategories = image.categories.filter(category => category !== tagToRemove);
+                return { ...image, categories: updatedCategories };
+            }
+            return image;
+        });
+
+        setFilteredImages(updatedImages_filtered)
 
         setImages(updatedImages);
     };

@@ -37,7 +37,7 @@ const ImageGrid = () => {
             setCurrentPage(totalNumberOfPages);
         }
     };
-
+    
     return (
         <div className="image-grid">
             {currentImages.slice(0, perPage).map((image, index) => (
@@ -51,6 +51,8 @@ const ImageGrid = () => {
                             id={`checkbox-${index}`}
                         />
                     )}
+
+                    {console.log(image)}
 
                     {enableDelete && (
                         <button
