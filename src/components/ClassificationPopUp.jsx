@@ -12,32 +12,32 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
 
     const addTag = () => {
         if (!tagInput) return;
-    
+
         const tagInputLower = tagInput.toLowerCase();
         if (selectedTags.some(tag => tag.value.toLowerCase() === tagInputLower)) {
             return; // Tag already exists, no need to add
         }
-    
+
         const newTag = {
             value: tagInput,
             color: randomColor()
         };
-    
+
         setSelectedTags([...selectedTags, newTag]);
-    
+
         const updateImageCategories = (image) => {
             if (selectedImages.includes(image.filename) && !image.categories.includes(newTag.value)) {
                 return { ...image, categories: [...image.categories, newTag.value] };
             }
             return image;
         };
-    
+
         setImages(images.map(updateImageCategories));
         setFilteredImages(filteredImages.map(updateImageCategories));
-    
+
         setTagInput('');
     };
-    
+
 
     const handleInputKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -52,7 +52,7 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
 
     const removeTag = (tagToRemove) => {
         setSelectedTags(selectedTags.filter(tag => tag.value !== tagToRemove));
-    
+
         const updateImageCategories = (image) => {
             if (selectedImages.includes(image.filename)) {
                 const updatedCategories = image.categories.filter(category => category !== tagToRemove);
@@ -60,10 +60,10 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
             }
             return image;
         };
-    
+
         setImages(images.map(updateImageCategories));
         setFilteredImages(filteredImages.map(updateImageCategories));
-    }    
+    }
 
     const tagExists = tagInput && selectedTags.some(tag => tag.value.toLowerCase() === tagInput.toLowerCase());
 
@@ -72,7 +72,14 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
     };
 
     return (
-        <Modal show={isClassVisible} onHide={() => setIsClassVisible(false)} size="lg" aria-labelledby="classification-pop-up">
+        <Modal
+            show={isClassVisible}
+            onHide={() => {
+                setIsClassVisible(false)
+                setSelectedTags([])
+            }}
+            size="lg"
+            aria-labelledby="classification-pop-up">
             <Modal.Header closeButton>
                 <Modal.Title id="classification-pop-up-title">
                     Assign Tags To Images
