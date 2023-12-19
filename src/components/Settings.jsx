@@ -9,11 +9,16 @@ import { FaSearch } from "react-icons/fa";
 function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
 
-    const { selectedImages, images, setFilteredImages } = React.useContext(ImageContext);
+    const { selectedImages, onSearch, images, setFilteredImages} = React.useContext(ImageContext);
 
 
     const search = (searchInput) => {
-        searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
+        if(!onSearch){
+            searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
+        }
+        else{
+            onSearch(searchInput)
+        }
     }
 
     return (

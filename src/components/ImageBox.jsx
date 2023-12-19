@@ -6,10 +6,9 @@ import ImageGrid from './ImageGrid';
 
 import ImageContext from '../context/ImageContext';
 
-const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight, enableCheckBox, enableDelete, rootStyle }) => {
+const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, onSearch, perPage, imageWidth, imageHeight, boxWidth, boxHeight, enableCheckBox, enableDelete, rootStyle }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImages, setSelectedImages] = useState([]);
-  const [filteredImages, setFilteredImages] = useState(images)
 
   const contextValue = {
     images,
@@ -24,7 +23,8 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
     selectedImages,
     setSelectedImages,
     filteredImages,
-    setFilteredImages
+    setFilteredImages,
+    onSearch
   };
 
 

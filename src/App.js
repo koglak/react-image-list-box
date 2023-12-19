@@ -6,7 +6,8 @@ import { imagesData } from './data/imagesData';
 
 function App() {
 
-  const [images, setImages] = React.useState(imagesData);
+  const [images, setImages] = React.useState(imagesData)
+  const [filteredImages, setFilteredImages] = React.useState(images)
 
   return (
     <div className="App">
@@ -14,6 +15,11 @@ function App() {
       <ImageBox
         images={images}
         setImages={setImages}
+        filteredImages={filteredImages}
+        setFilteredImages={setFilteredImages}
+        onSearch={(searchInput)=>{
+          searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
+        }}
         perPage={5}
         imageWidth={200}
         imageHeight={200}
