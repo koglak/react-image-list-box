@@ -8,6 +8,7 @@ import { FaSearch } from "react-icons/fa";
 
 function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
+    const [tagList, setTagList] = React.useState([])
 
     const { selectedImages, onSearch, images, setFilteredImages} = React.useContext(ImageContext);
 
@@ -20,6 +21,11 @@ function Settings() {
             onSearch(searchInput)
         }
     }
+
+    React.useEffect(() => {
+        const uniqueCategories = [...new Set(images.reduce((acc, item) => [...acc, ...item.categories], []))];
+        setTagList(uniqueCategories)
+    }, [images]);
 
     return (
 
