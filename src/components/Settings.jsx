@@ -10,14 +10,14 @@ function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
     const [tagList, setTagList] = React.useState([])
 
-    const { selectedImages, onSearch, images, setFilteredImages} = React.useContext(ImageContext);
+    const { selectedImages, onSearch, images, setFilteredImages } = React.useContext(ImageContext);
 
 
     const search = (searchInput) => {
-        if(!onSearch){
-            searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
+        if (!onSearch) {
+            searchInput !== "" ? setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
         }
-        else{
+        else {
             onSearch(searchInput)
         }
     }
@@ -39,7 +39,7 @@ function Settings() {
                 <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>
             </div>
 
-            <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} />
+            <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} tagList={tagList} />
 
 
             <div className="input-group mt-2 w-25" >

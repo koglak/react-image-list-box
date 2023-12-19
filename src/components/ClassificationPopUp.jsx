@@ -3,8 +3,9 @@ import Modal from 'react-bootstrap/Modal';
 import randomColor from 'randomcolor'; // Import randomcolor
 import '../styles/ClassificationPopUp.css';
 import ImageContext from '../context/ImageContext';
+import { FaRegCircleQuestion } from "react-icons/fa6";
 
-function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
+function ClassificationPopUp({ isClassVisible, setIsClassVisible, tagList }) {
     const [selectedTags, setSelectedTags] = React.useState([]);
     const [tagInput, setTagInput] = React.useState('');
 
@@ -114,6 +115,11 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
                             onKeyDown={handleInputKeyDown} />
                         <button className="add-btn" onClick={addTag}>+ Add Tag</button>
                     </div>
+
+                    <span className='mt-2'>
+                        <FaRegCircleQuestion />
+                        <em> Already used tags for other images: {tagList.join(", ")}</em>
+                    </span>
                 </div>
             </Modal.Body>
         </Modal>
