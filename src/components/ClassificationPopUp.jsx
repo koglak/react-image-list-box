@@ -68,7 +68,7 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
         <Modal show={isClassVisible} onHide={() => setIsClassVisible(false)} size="lg" aria-labelledby="classification-pop-up">
             <Modal.Header closeButton>
                 <Modal.Title id="classification-pop-up-title">
-                    Assign Class To Images
+                    Assign Tags To Images
                 </Modal.Title>
             </Modal.Header>
 

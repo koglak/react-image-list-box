@@ -17,7 +17,7 @@ function Settings() {
 
             <div className='d-flex align-items-center justify-content-end'>
                 <span>{selectedImages.length} Images Selected</span>
-                <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Class</button>
+                <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>
             </div>
 
             <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} />
