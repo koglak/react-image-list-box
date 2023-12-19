@@ -52,8 +52,6 @@ const ImageGrid = () => {
                         />
                     )}
 
-                    {console.log(image)}
-
                     {enableDelete && (
                         <button
                             className="image-item-button"
