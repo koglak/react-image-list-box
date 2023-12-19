@@ -1,8 +1,11 @@
 import React from 'react';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import '../styles/ImageGrid.css'
+import ImageContext from '../context/ImageContext';
 
-const ImageGrid = ({ images, setImages, perPage, currentPage, setCurrentPage, imageWidth, imageHeight, enableCheckBox, enableDelete, selectedImages, setSelectedImages }) => {
+const ImageGrid = () => {
+
+    const { images, setImages, perPage, currentPage, imageWidth, imageHeight, enableCheckBox, enableDelete, setCurrentPage, selectedImages, setSelectedImages } = React.useContext(ImageContext);
 
     const indexOfLastImage = currentPage * perPage;
     const indexOfFirstImage = indexOfLastImage - perPage;

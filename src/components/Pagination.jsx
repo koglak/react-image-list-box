@@ -1,8 +1,13 @@
 import React from 'react';
 import '../styles/Pagination.css'
+import ImageContext from '../context/ImageContext'
 
+function Pagination() {
 
-function Pagination({ currentPage, numOfPage, setCurrentPage }) {
+    const { images, perPage, currentPage, setCurrentPage } = React.useContext(ImageContext);
+
+    const numOfPage = Math.ceil(images.length / perPage)
+
     const handlePrevClick = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
@@ -22,7 +27,7 @@ function Pagination({ currentPage, numOfPage, setCurrentPage }) {
     return (
         <div className='pagination-box'>
             <button onClick={handlePrevClick} disabled={currentPage === 1}>&lt;&lt; Prev</button>
-            
+
             {/* Dropdown for selecting the current page */}
             <select
                 value={currentPage}
@@ -34,9 +39,9 @@ function Pagination({ currentPage, numOfPage, setCurrentPage }) {
                         {i + 1}
                     </option>
                 ))}
-            </select> 
+            </select>
             of {numOfPage}
-            
+
             <button onClick={handleNextClick} disabled={currentPage === numOfPage}>Next &gt;&gt;</button>
         </div>
     );
