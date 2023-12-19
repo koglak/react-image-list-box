@@ -2,6 +2,7 @@ import React from 'react';
 import { RiDeleteBin5Line } from "react-icons/ri";
 import '../styles/ImageGrid.css'
 import ImageContext from '../context/ImageContext';
+import { IoMdPricetags } from "react-icons/io";
 
 const ImageGrid = () => {
 
@@ -57,6 +58,16 @@ const ImageGrid = () => {
                             <RiDeleteBin5Line size={20} />
                         </button>
                     )}
+
+                    {image.categories.length > 0 && (
+                        <div className="category-badge-container">
+                            <div className="category-badge">
+                                <IoMdPricetags className='category-icon'/>
+                                <span className="badge-text">Tag Assigned</span>
+                            </div>
+                        </div>
+                    )}
+
 
                     <img
                         src={image.src}

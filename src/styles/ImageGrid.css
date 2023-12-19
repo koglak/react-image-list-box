@@ -16,9 +16,9 @@
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+    transition: box-shadow 0.3s ease; 
     box-sizing: border-box;
-    overflow: hidden; /* Ensures that the scaling doesn't affect the overall layout */
+    overflow: hidden; 
 }
 
 .image-item {
@@ -29,21 +29,21 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    overflow: hidden; /* Ensures that the scaling doesn't affect the overall layout */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for transform and shadow */
-    border: 5px solid transparent; /* Invisible border to maintain layout */
+    overflow: hidden; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    border: 5px solid transparent; 
 }
 
 .image-item img {
     width: 100%;
     height: auto;
     object-fit: cover;
-    transition: transform 0.3s ease; /* Smooth transition for transform */
+    transition: transform 0.3s ease; 
 }
 
 .image-item:hover {
-    transform: scale(1.05); /* Scales up the item */
-    z-index: 1; /* Ensure the scaled item is above other elements */
+    transform: scale(1.05); 
+    z-index: 1; 
 }
 
 .image-item-button {
@@ -51,69 +51,118 @@
     top: 5px;
     right: 5px;
     background-color: black;
-    color: white; /* Example background color */
+    color: white;
     border: none;
-    border-radius: 50%; /* Makes the button circular */
-    padding: 5px; /* Adjust padding to size the button */
+    border-radius: 50%;
+    padding: 5px;
     cursor: pointer;
-    transition: opacity 0.3s ease; /* Transition for the button appearance */
-    opacity: 0; /* Button is initially invisible */
-    z-index: 2; /* Ensure the button is above the image */
-    display: flex; /* To center the content inside the button */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    width: 30px; /* Example width */
-    height: 30px; /* Example height */
-    font-size: 16px; /* Adjust as needed */
-    line-height: 1; /* Adjust line height to ensure the text is centered if needed */
+    transition: opacity 0.3s ease; 
+    opacity: 0;
+    z-index: 2; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    width: 30px; 
+    height: 30px; 
+    font-size: 16px; 
+    line-height: 1; 
 }
 
 .image-item:hover .image-item-button {
-    opacity: 1; /* Button becomes visible on hover */
+    opacity: 1; 
 }
 
 .image-checkbox {
-    -webkit-appearance: none; /* Removes default styling for Webkit browsers */
-    -moz-appearance: none; /* Removes default styling for Firefox */
-    appearance: none; /* Removes default styling */
+    -webkit-appearance: none; 
+    -moz-appearance: none; 
+    appearance: none; 
     position: absolute;
-    top: 0; /* Align the top edge of the checkbox to the vertical middle */
-    left: 0; /* Align to the left edge of the image-item */
-    opacity: 0; /* Hidden by default */
-    z-index: 2; /* Ensure the checkbox is above the image */
-    border: 2px solid #ccc; /* Custom border for the checkbox */
-    background-color: #fff; /* Background color when not checked */
-    width: 20px; /* Set a specific width for the checkbox */
-    height: 20px; /* Set a specific height for the checkbox */
+    top: 0; 
+    left: 0; 
+    opacity: 0; 
+    z-index: 2; 
+    border: 2px solid #ccc; 
+    background-color: #fff; 
+    width: 20px; 
+    height: 20px; 
     cursor: pointer;
-    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for colors */
+    transition: background-color 0.3s, border-color 0.3s; 
 }
 
-/* Always show the checkbox if it's checked, regardless of hover state */
 .image-checkbox:checked {
     opacity: 1;
-    background-color: black; /* Background color when checked */
-    border-color: black; /* Border color when checked */
+    background-color: black; 
+    border-color: black; 
 }
 
-/* Show the checkbox on hover of the .image-item container */
 .image-item:hover .image-checkbox {
-    opacity: 1; /* Show checkbox on hover */
+    opacity: 1; 
 }
 
 .image-checkbox:checked::after {
-    content: '✔'; /* Unicode character for the checkmark */
-    color: white; /* Checkmark color */
+    content: '✔'; 
+    color: white; 
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 16px; /* Adjust size accordingly */
+    font-size: 16px; 
     line-height: 1;
 }
 
 .image-item:hover .image-checkbox,
 .image-item .image-checkbox:checked {
-    opacity: 1; /* Show checkbox on hover and when checked */
+    opacity: 1; 
 }
 
+
+.category-badge-container {
+    position: absolute;
+    bottom: 23px; 
+    left: 2px; 
+    z-index: 2;
+}
+
+.category-badge {
+    position: relative;
+    width: 25px; 
+    height: 25px; 
+    border-radius: 50%;
+    background-color: #000; 
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.3s ease, border-radius 0.3s ease;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.category-badge:hover {
+    
+    width: 100px; /* expanded width */
+    border-radius: 25px; /* adjust as needed to maintain circular shape on the left side */
+}
+
+.badge-text {
+    visibility: hidden;
+    display: block;
+    margin-left: 5px; /* adjust as needed */
+    white-space: nowrap;
+    overflow: visible;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 10px;
+}
+
+.category-badge:hover .badge-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+.category-icon {
+    position: absolute;
+    bottom: 5px; 
+    left: 4px; 
+    z-index: 2;
+}
