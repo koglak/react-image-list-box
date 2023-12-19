@@ -8,18 +8,11 @@ import { FaSearch } from "react-icons/fa";
 
 function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
-    const [searchInput, setSearchInput] = React.useState('');
 
     const { selectedImages, images, setFilteredImages } = React.useContext(ImageContext);
 
-    const handleInputKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            search()
-        }
-    };
 
-    const search = () => {
+    const search = (searchInput) => {
         searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
     }
 
@@ -42,11 +35,11 @@ function Settings() {
                 <input type="text"
                     className="text-input"
                     placeholder="Search"
-                    value={searchInput}
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    onKeyDown={handleInputKeyDown}
+                    onChange={(e) => {
+                        search(e.currentTarget.value)
+                    }}
                 />
-                <button className="add-btn" onClick={search}><FaSearch /></button>
+                <button className="add-btn" ><FaSearch /></button>
             </div>
 
         </div>);
