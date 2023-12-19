@@ -16,9 +16,9 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
                 value: tagInput,
                 color: randomColor()
             };
-    
+
             setSelectedTags([...selectedTags, newTag]);
-    
+
             const updatedImages = images.map(image => {
                 if (selectedImages.includes(image.filename)) {
                     if (!image.categories.includes(newTag.value)) {
@@ -27,13 +27,13 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
                 }
                 return image;
             });
-    
+
             setImages(updatedImages);
-    
+
             setTagInput('');
         }
     };
-    
+
     const handleInputKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -47,6 +47,15 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
 
     const removeTag = (tagToRemove) => {
         setSelectedTags(selectedTags.filter(tag => tag.value !== tagToRemove));
+        const updatedImages = images.map(image => {
+            if (selectedImages.includes(image.filename)) {
+                const updatedCategories = image.categories.filter(category => category !== tagToRemove);
+                return { ...image, categories: updatedCategories };
+            }
+            return image;
+        });
+
+        setImages(updatedImages);
     };
 
     const tagExists = tagInput && selectedTags.some(tag => tag.value.toLowerCase() === tagInput.toLowerCase());
