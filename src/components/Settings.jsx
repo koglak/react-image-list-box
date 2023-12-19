@@ -10,7 +10,7 @@ function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
     const [tagList, setTagList] = React.useState([])
 
-    const { selectedImages, onSearch, images, setFilteredImages } = React.useContext(ImageContext);
+    const { selectedImages, onSearch, images, filteredImages, setImages, setFilteredImages, imageTypes } = React.useContext(ImageContext);
 
 
     const search = (searchInput) => {
@@ -22,10 +22,23 @@ function Settings() {
         }
     }
 
+    const assignType = (type) => {
+        const updateImageType = (image) => {
+            if (selectedImages.includes(image.filename)) {
+                return { ...image, type: type };
+            }
+            return image;
+        };
+
+        setImages(images.map(updateImageType));
+        setFilteredImages(filteredImages.map(updateImageType));
+    }
+
     React.useEffect(() => {
         const uniqueCategories = [...new Set(images.reduce((acc, item) => [...acc, ...item.categories], []))];
         setTagList(uniqueCategories)
     }, [images]);
+
 
     return (
 
@@ -35,8 +48,20 @@ function Settings() {
             </div>
 
             <div className='d-flex align-items-center justify-content-end'>
-                <span>{selectedImages.length} Images Selected</span>
                 <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>
+                {
+                    imageTypes.map((type, index) => (
+                        <button
+                            disabled={selectedImages.length === 0}
+                            className='btn btn-dark ms-1'
+                            onClick={() => assignType(type)}
+                            key={index}>
+                            Set {type}
+                        </button>))
+                }
+            </div>
+            <div className='text-end m-1' style={{fontSize: "12px"}}>
+                <span>{selectedImages.length} Images Selected</span>
             </div>
 
             <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} tagList={tagList} />

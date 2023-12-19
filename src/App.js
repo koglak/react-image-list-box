@@ -17,8 +17,9 @@ function App() {
         setImages={setImages}
         filteredImages={filteredImages}
         setFilteredImages={setFilteredImages}
-        onSearch={(searchInput)=>{
-          searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
+        imageTypes={["Training", "Test", "Validation"]}
+        onSearch={(searchInput) => {
+          searchInput !== "" ? setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
         }}
         perPage={5}
         imageWidth={200}
@@ -27,12 +28,12 @@ function App() {
         boxHeight={"auto"}
         enableCheckBox={true}
         enableDelete={true}
-        rootStyle={{ 
-          backgroundColor: 'white', 
+        rootStyle={{
+          backgroundColor: 'white',
           border: '1px solid black',
           borderRadius: "5px"
-        }} 
-        />
+        }}
+      />
     </div>
   );
 }
