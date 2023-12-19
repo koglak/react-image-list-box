@@ -4,9 +4,9 @@ import ImageContext from '../context/ImageContext'
 
 function Pagination() {
 
-    const { images, perPage, currentPage, setCurrentPage } = React.useContext(ImageContext);
+    const { filteredImages, perPage, currentPage, setCurrentPage } = React.useContext(ImageContext);
 
-    const numOfPage = Math.ceil(images.length / perPage)
+    const numOfPage = Math.ceil(filteredImages.length / perPage)
 
     const handlePrevClick = () => {
         if (currentPage > 1) {

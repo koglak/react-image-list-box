@@ -3,10 +3,25 @@ import '../styles/Settings.css'
 import { IoImagesOutline } from "react-icons/io5";
 import ClassificationPopUp from './ClassificationPopUp';
 import ImageContext from '../context/ImageContext';
+import '../styles/ClassificationPopUp.css';
+import { FaSearch } from "react-icons/fa";
 
 function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
-    const { selectedImages } = React.useContext(ImageContext);
+    const [searchInput, setSearchInput] = React.useState('');
+
+    const { selectedImages, images, setFilteredImages } = React.useContext(ImageContext);
+
+    const handleInputKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            search()
+        }
+    };
+
+    const search = () => {
+        searchInput !== "" ?  setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
+    }
 
     return (
 
@@ -21,6 +36,18 @@ function Settings() {
             </div>
 
             <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} />
+
+
+            <div className="input-group mt-2 w-25" >
+                <input type="text"
+                    className="text-input"
+                    placeholder="Search"
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    onKeyDown={handleInputKeyDown}
+                />
+                <button className="add-btn" onClick={search}><FaSearch /></button>
+            </div>
 
         </div>);
 }

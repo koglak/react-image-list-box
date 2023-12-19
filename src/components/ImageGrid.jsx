@@ -6,11 +6,11 @@ import { IoMdPricetags } from "react-icons/io";
 
 const ImageGrid = () => {
 
-    const { images, setImages, perPage, currentPage, imageWidth, imageHeight, enableCheckBox, enableDelete, setCurrentPage, selectedImages, setSelectedImages } = React.useContext(ImageContext);
+    const { images, setImages, filteredImages, setFilteredImages, perPage, currentPage, imageWidth, imageHeight, enableCheckBox, enableDelete, setCurrentPage, selectedImages, setSelectedImages } = React.useContext(ImageContext);
 
     const indexOfLastImage = currentPage * perPage;
     const indexOfFirstImage = indexOfLastImage - perPage;
-    const currentImages = images.slice(indexOfFirstImage, indexOfLastImage);
+    const currentImages = filteredImages.slice(indexOfFirstImage, indexOfLastImage);
 
     const toggleSelectImage = (imageName) => {
         setSelectedImages(prevSelectedImages => {
@@ -23,13 +23,16 @@ const ImageGrid = () => {
     };
 
     const handleDelete = (imageNameToDelete) => {
-        const filteredImages = images.filter(image => image.filename !== imageNameToDelete);
-        setImages(filteredImages);
+        const updatedImages = images.filter(image => image.filename !== imageNameToDelete)
+        const updatedImages_filtered = filteredImages.filter(image => image.filename !== imageNameToDelete)
+        setImages(updatedImages);
+        setFilteredImages(updatedImages_filtered)
+        
         setSelectedImages(prevSelectedImages =>
             prevSelectedImages.filter(name => name !== imageNameToDelete)
         );
 
-        const totalNumberOfPages = Math.ceil(filteredImages.length / perPage);
+        const totalNumberOfPages = Math.ceil(updatedImages.length / perPage);
         if (currentPage > totalNumberOfPages) {
             setCurrentPage(totalNumberOfPages);
         }

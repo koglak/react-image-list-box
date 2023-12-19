@@ -9,6 +9,7 @@ import ImageContext from '../context/ImageContext';
 const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidth, boxHeight, enableCheckBox, enableDelete, rootStyle }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImages, setSelectedImages] = useState([]);
+  const [filteredImages, setFilteredImages] = useState(images)
 
   const contextValue = {
     images,
@@ -21,7 +22,9 @@ const ImageBox = ({ images, setImages, perPage, imageWidth, imageHeight, boxWidt
     enableCheckBox,
     enableDelete,
     selectedImages,
-    setSelectedImages
+    setSelectedImages,
+    filteredImages,
+    setFilteredImages
   };
 
 
