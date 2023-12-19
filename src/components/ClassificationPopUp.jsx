@@ -11,38 +11,33 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
     const { selectedImages, setImages, images, filteredImages, setFilteredImages } = React.useContext(ImageContext);
 
     const addTag = () => {
-        if (tagInput && !selectedTags.some(tag => tag.value.toLowerCase() === tagInput.toLowerCase())) {
-            const newTag = {
-                value: tagInput,
-                color: randomColor()
-            };
-
-            setSelectedTags([...selectedTags, newTag]);
-
-            const updatedImages = images.map(image => {
-                if (selectedImages.includes(image.filename)) {
-                    if (!image.categories.includes(newTag.value)) {
-                        return { ...image, categories: [...image.categories, newTag.value] };
-                    }
-                }
-                return image;
-            });
-
-            const updatedImages_filtered = filteredImages.map(image => {
-                if (selectedImages.includes(image.filename)) {
-                    if (!image.categories.includes(newTag.value)) {
-                        return { ...image, categories: [...image.categories, newTag.value] };
-                    }
-                }
-                return image;
-            });
-
-            setImages(updatedImages);
-            setFilteredImages(updatedImages_filtered)
-
-            setTagInput('');
+        if (!tagInput) return;
+    
+        const tagInputLower = tagInput.toLowerCase();
+        if (selectedTags.some(tag => tag.value.toLowerCase() === tagInputLower)) {
+            return; // Tag already exists, no need to add
         }
+    
+        const newTag = {
+            value: tagInput,
+            color: randomColor()
+        };
+    
+        setSelectedTags([...selectedTags, newTag]);
+    
+        const updateImageCategories = (image) => {
+            if (selectedImages.includes(image.filename) && !image.categories.includes(newTag.value)) {
+                return { ...image, categories: [...image.categories, newTag.value] };
+            }
+            return image;
+        };
+    
+        setImages(images.map(updateImageCategories));
+        setFilteredImages(filteredImages.map(updateImageCategories));
+    
+        setTagInput('');
     };
+    
 
     const handleInputKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -57,26 +52,18 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
 
     const removeTag = (tagToRemove) => {
         setSelectedTags(selectedTags.filter(tag => tag.value !== tagToRemove));
-        const updatedImages = images.map(image => {
+    
+        const updateImageCategories = (image) => {
             if (selectedImages.includes(image.filename)) {
                 const updatedCategories = image.categories.filter(category => category !== tagToRemove);
                 return { ...image, categories: updatedCategories };
             }
             return image;
-        });
-
-        const updatedImages_filtered = filteredImages.map(image => {
-            if (selectedImages.includes(image.filename)) {
-                const updatedCategories = image.categories.filter(category => category !== tagToRemove);
-                return { ...image, categories: updatedCategories };
-            }
-            return image;
-        });
-
-        setFilteredImages(updatedImages_filtered)
-
-        setImages(updatedImages);
-    };
+        };
+    
+        setImages(images.map(updateImageCategories));
+        setFilteredImages(filteredImages.map(updateImageCategories));
+    }    
 
     const tagExists = tagInput && selectedTags.some(tag => tag.value.toLowerCase() === tagInput.toLowerCase());
 
