@@ -2,10 +2,13 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import randomColor from 'randomcolor'; // Import randomcolor
 import '../styles/ClassificationPopUp.css';
+import ImageContext from '../context/ImageContext';
 
 function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
     const [selectedTags, setSelectedTags] = React.useState([]);
     const [tagInput, setTagInput] = React.useState('');
+
+    const { selectedImages, setImages, images } = React.useContext(ImageContext);
 
     const addTag = () => {
         if (tagInput && !selectedTags.some(tag => tag.value.toLowerCase() === tagInput.toLowerCase())) {
@@ -13,11 +16,24 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible }) {
                 value: tagInput,
                 color: randomColor()
             };
+    
             setSelectedTags([...selectedTags, newTag]);
+    
+            const updatedImages = images.map(image => {
+                if (selectedImages.includes(image.filename)) {
+                    if (!image.categories.includes(newTag.value)) {
+                        return { ...image, categories: [...image.categories, newTag.value] };
+                    }
+                }
+                return image;
+            });
+    
+            setImages(updatedImages);
+    
             setTagInput('');
         }
     };
-
+    
     const handleInputKeyDown = (e) => {
         if (e.key === 'Enter') {
             e.preventDefault();
