@@ -63,7 +63,7 @@ const ImageGrid = () => {
                         </button>
                     )}
 
-                    {image.categories.length > 0 && (
+                    {enableCheckBox && image.categories.length > 0 && (
                         <div className="category-badge-container-left">
                             <div className="category-badge">
                                 <IoMdPricetags className='category-icon' />
@@ -72,7 +72,7 @@ const ImageGrid = () => {
                         </div>
                     )}
 
-                    {image.type !== "" && (
+                    {enableCheckBox && image.type !== "" && (
                         <div className="category-badge-container-right">
                             <div className="category-badge">
                                 {imageTypes.find(item => item.name === image.type).icon}
