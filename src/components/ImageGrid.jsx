@@ -38,15 +38,22 @@ const ImageGrid = () => {
             setCurrentPage(totalNumberOfPages);
         }
     };
+
+
     return (
         <div className="image-grid">
 
             {currentImages.slice(0, perPage).map((image, index) => (
                 <div key={index} 
                 className="image-item" 
-                onClick={() => {
-                    setSelectedImgObj(image)
-                    setShowOnClickPage(true)}}>
+                onClick={(event) => {
+                    if (event.target.type === 'checkbox') {
+                        return;
+                    }
+            
+                    setSelectedImgObj(image);
+                    setShowOnClickPage(true);
+                }}>
                     {enableCheckBox && (
                         <input
                             type="checkbox"
@@ -60,7 +67,10 @@ const ImageGrid = () => {
                     {enableDelete && (
                         <button
                             className="image-item-button"
-                            onClick={() => handleDelete(image.filename)}
+                            onClick={(event) => {
+                                event.stopPropagation(); // Prevents the event from bubbling up
+                                handleDelete(image.filename);
+                            }}                            
                             title="Delete Image"
                         >
                             <RiDeleteBin5Line size={20} />

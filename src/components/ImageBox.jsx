@@ -6,7 +6,7 @@ import ImageGrid from './ImageGrid';
 
 import ImageContext from '../context/ImageContext';
 
-const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageTypes, onSearch, perPage, imageWidth, imageHeight, 
+const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageTypes, onSearch, perPage, imageWidth, imageHeight,
   boxWidth, boxHeight, enableCheckBox, enableDelete, enableTagAssignment, onClickPage, selectedImgObj, setSelectedImgObj, rootStyle }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,12 +40,13 @@ const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageT
   return (
     <ImageContext.Provider value={contextValue}>
       <div className='image-box' style={{ width: `${boxWidth}px`, height: `${boxHeight}px`, ...rootStyle }}>
+
         <Settings />
 
-        <ImageGrid/>
+        <ImageGrid />
 
-        <Pagination/>
-
+        <Pagination />
+        
         {showOnClickPage && onClickPage(showOnClickPage, setShowOnClickPage, selectedImgObj)}
 
       </div>
