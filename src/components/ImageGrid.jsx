@@ -45,17 +45,17 @@ const ImageGrid = () => {
     return (
         <div className="image-grid">
 
-            {currentImages.length > 0  ? currentImages.slice(0, perPage).map((image, index) => (
-                <div key={index} 
-                className="image-item" 
-                onClick={(event) => {
-                    if (event.target.type === 'checkbox') {
-                        return;
-                    }
-            
-                    setSelectedImgObj(image);
-                    setShowOnClickPage(true);
-                }}>
+            {currentImages.length > 0 ? currentImages.slice(0, perPage).map((image, index) => (
+                <div key={index}
+                    className="image-item"
+                    onClick={(event) => {
+                        if (event.target.type === 'checkbox') {
+                            return;
+                        }
+
+                        setSelectedImgObj(image);
+                        setShowOnClickPage(true);
+                    }}>
                     {enableCheckBox && (
                         <input
                             type="checkbox"
@@ -74,18 +74,27 @@ const ImageGrid = () => {
                                 event.stopPropagation(); // Prevents the event from bubbling up
                                 handleDelete(image.filename);
                             }}
-                            style={badgeStyle}                            
+                            style={badgeStyle}
                             title="Delete Image"
                         >
                             <RiDeleteBin5Line size={20} />
                         </button>
                     )}
 
-                    {enableCheckBox && image.categories.length > 0 && (
+                    {enableCheckBox && Array.isArray(image.categories) && image.categories.length > 0 && (
                         <div className="category-badge-container-left" >
                             <div className="category-badge" style={badgeStyle}    >
                                 <IoMdPricetags className='category-icon' />
                                 <span className="badge-text">Tag Assigned</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {enableCheckBox && Array.isArray(image.annotations) && image.annotations.length > 0 && (
+                        <div className="category-badge-container-left" >
+                            <div className="category-badge" style={badgeStyle}    >
+                                <IoMdPricetags className='category-icon' />
+                                <span className="badge-text">Annotation Assigned</span>
                             </div>
                         </div>
                     )}
@@ -106,7 +115,7 @@ const ImageGrid = () => {
                     />
                     <div className='image-label'>{image.filename}</div>
                 </div>
-            )): <h5><em>The search returned 0 results...</em></h5>}
+            )) : <h5><em>The search returned 0 results...</em></h5>}
         </div>
     );
 };
