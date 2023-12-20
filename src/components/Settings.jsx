@@ -5,6 +5,7 @@ import ClassificationPopUp from './ClassificationPopUp';
 import ImageContext from '../context/ImageContext';
 import '../styles/ClassificationPopUp.css';
 import { FaSearch } from "react-icons/fa";
+import DropdownComponent from './DropdownComponent';
 
 function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
@@ -59,8 +60,8 @@ function Settings() {
                         </button>))
                 }
 
-                <button className='btn btn-dark ms-1' disabled={selectedImages.length === filteredImages.length} onClick={()=> setSelectedImages(filteredImages.map(img=> img.filename))}>Select All</button>
-                <button className='btn btn-dark ms-1' disabled={selectedImages.length === 0} onClick={()=> setSelectedImages([])}>De-Select</button>
+                <button className='btn btn-dark ms-1' disabled={selectedImages.length === filteredImages.length} onClick={() => setSelectedImages(filteredImages.map(img => img.filename))}>Select All</button>
+                <button className='btn btn-dark ms-1' disabled={selectedImages.length === 0} onClick={() => setSelectedImages([])}>De-Select</button>
 
             </div>}
             {enableCheckBox && <div className='text-end m-1' style={{ fontSize: "12px" }}>
@@ -70,15 +71,22 @@ function Settings() {
             <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} tagList={tagList} />
 
 
-            <div className="input-group mt-2 w-25" >
-                <input type="text"
-                    className="text-input"
-                    placeholder="Search"
-                    onChange={(e) => {
-                        search(e.currentTarget.value)
-                    }}
-                />
-                <button className="add-btn" ><FaSearch /></button>
+
+            <div className='d-flex align-items-center'>
+                <div className="input-group w-25" >
+                    <input type="text"
+                        className="text-input"
+                        placeholder="Search"
+                        onChange={(e) => {
+                            search(e.currentTarget.value)
+                        }}
+                    />
+                    <button className="add-btn" ><FaSearch /></button>
+                </div>
+
+                <DropdownComponent title="Tag" options={tagList} keyName="categories" />
+                <DropdownComponent title="Type" options={imageTypes.map(t=>t.name)} keyName="type" />
+
             </div>
 
         </div>);
