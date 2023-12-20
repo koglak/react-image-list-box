@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# react-image-list-box
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ 📢 It is a react component where you can list your image files.
 
-## Available Scripts
 
-In the project directory, you can run:
+![ezgif com-video-to-gif-converted](https://github.com/koglak/react-image-list-box/assets/24697147/9f0015a3-8176-4cab-818f-57362800b3a8)
 
-### `npm start`
+## Getting Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Install
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+        npm start --save react-image-list-box
 
-### `npm test`
+or
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+        yarn add --save react-image-list-box
 
-### `npm run build`
+### What We Offer?
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* List your images
+* Drop images from list
+* Filter images by name
+* Assign tags to your images
+* Filter images by assigned tags
+* Assign different types to your images (use imageTypes prop)
+* Filter images by different types
+* Arrange number of images per page
+* Arrange image size on list
+* Responsive box
+* Select All and assign tags to all images
+* Adjust colors of component by using Style props
+* Click pictures and render a component based on your need
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Basic Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+        import ImageBox from "react-image-list-box";
 
-### `npm run eject`
+        const Example = () => {
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+          const [images, setImages] = React.useState(imagesData)
+          const [filteredImages, setFilteredImages] = React.useState(images)
+          
+          return (
+            <ImageBox
+              images={images}
+              setImages={setImages}
+              filteredImages={filteredImages}
+              setFilteredImages={setFilteredImages}
+              perPage={10}
+              imageWidth={200}
+              imageHeight={200}
+              boxWidth={"auto"}
+              boxHeight={"auto"}
+            />
+          );
+        };
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Props Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+| **Prop** | **Type** | **Description** |
+| --- | --- | --- |
+| `images` | Array of Objects | Holds the data for images. |
+| `setImages` | Function | Function to update the state of `images`. |
+| `filteredImages` | Array of Objects | Holds the filtered data for images. |
+| `setFilteredImages` | Function | Function to update the state of `filteredImages`. |
+| `imageTypes` | Array of Objects | Defines the categories of images with names and icons. Each object in the array should have a `name` (string) and an `icon` (JSX element). |
+| `onSearch` | Function | Function called when a search is performed. It should accept a search input string and filter images accordingly. |
+| `onClickPage` | Function | Function to render a specific page or component when an image is clicked. It accepts parameters `showOnClickPage`, `setShowOnClickPage`, and `selectedImgObj`. |
+| `perPage` | Number | Number of images to display per page. |
+| `imageWidth` | Number | Width of each image in pixels. |
+| `imageHeight` | Number | Height of each image in pixels. |
+| `boxWidth` | String | Width of the image box container. Can be any valid CSS width value. |
+| `boxHeight` | String | Height of the image box container. Can be any valid CSS height value. |
+| `enableCheckBox` | Boolean | Determines whether checkboxes for images are enabled. |
+| `enableDelete` | Boolean | Determines whether the delete functionality for images is enabled. |
+| `enableTagAssignment` | Boolean | Determines whether the tag assignment functionality for images is enabled. |
+| `selectedImgObj` | Object | The currently selected image object. |
+| `setSelectedImgObj` | Function | Function to update the state of `selectedImgObj`. |
+| `rootStyle` | Object | Style object for the root element of the component. Should contain valid CSS properties. |
+| `buttonStyle` | Object | Style object for buttons in the component. |
+| `badgeStyle` | Object | Style object for badges in the component. |
+| `checkboxStyle` | Object | Style object for checkboxes in the component. |
+| `inputStyle` | Object | Style object for input elements in the component. |
+| `dropdownStyle` | Object | Style object for dropdown elements in the component. |
 
-## Learn More
+![ezgif com-video-to-gif-converted (1)](https://github.com/koglak/react-image-list-box/assets/24697147/938be744-1968-4810-82fb-d9c3aea79c11)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Images Data Example
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+        export const imagesData = [
+          {
+              src: 'https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/07/top-20-small-dog-breeds.jpeg.jpg',
+              filename: '1.jpg',
+              categories: [],
+              type: "",
+              annotations: []
+          },
+          {
+              src: 'https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*',
+              filename: '2.jpg',
+              categories: [],
+              type: "",
+              annotations: []
+          },
+          {
+              src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Labrador_Retriever_portrait.jpg/1200px-Labrador_Retriever_portrait.jpg',
+              filename: '3.jpg',
+              categories: [],
+              type: ""
+          },
+    ]
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
