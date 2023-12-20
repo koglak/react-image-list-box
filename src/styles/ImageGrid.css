@@ -116,10 +116,17 @@
 }
 
 
-.category-badge-container {
+.category-badge-container-left {
     position: absolute;
     bottom: 23px; 
     left: 2px; 
+    z-index: 2;
+}
+
+.category-badge-container-right {
+    position: absolute;
+    bottom: 23px; 
+    right: 2px; 
     z-index: 2;
 }
 

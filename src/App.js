@@ -4,6 +4,10 @@ import './styles/App.css'
 import ImageBox from './components/ImageBox'
 import { imagesData } from './data/imagesData';
 
+import { LuTestTube2 } from "react-icons/lu";
+import { FaRunning } from "react-icons/fa";
+import { GrValidate } from "react-icons/gr";
+
 function App() {
 
   const [images, setImages] = React.useState(imagesData)
@@ -17,7 +21,18 @@ function App() {
         setImages={setImages}
         filteredImages={filteredImages}
         setFilteredImages={setFilteredImages}
-        imageTypes={["Training", "Test", "Validation"]}
+        imageTypes={[{
+          name: "Training",
+          icon: <FaRunning className='category-icon'/>
+        },
+        {
+          name: "Test",
+          icon: <LuTestTube2 className='category-icon'/>
+        },
+        {
+          name: "Validation",
+          icon: <GrValidate className='category-icon'/>
+        }]}
         onSearch={(searchInput) => {
           searchInput !== "" ? setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
         }}

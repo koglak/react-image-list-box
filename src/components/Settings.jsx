@@ -54,9 +54,9 @@ function Settings() {
                         <button
                             disabled={selectedImages.length === 0}
                             className='btn btn-dark ms-1'
-                            onClick={() => assignType(type)}
+                            onClick={() => assignType(type.name)}
                             key={index}>
-                            Set {type}
+                            Set {type.name}
                         </button>))
                 }
             </div>
