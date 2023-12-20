@@ -43,6 +43,7 @@ function App() {
         boxHeight={"auto"}
         enableCheckBox={true}
         enableDelete={true}
+        enableTagAssignment={true}
         rootStyle={{
           backgroundColor: 'white',
           border: '1px solid black',

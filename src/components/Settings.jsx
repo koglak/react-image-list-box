@@ -10,7 +10,7 @@ function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
     const [tagList, setTagList] = React.useState([])
 
-    const { selectedImages, onSearch, images, filteredImages, setImages, setFilteredImages, imageTypes, enableCheckBox } = React.useContext(ImageContext);
+    const { selectedImages, onSearch, images, filteredImages, setImages, setFilteredImages, imageTypes, enableCheckBox, enableTagAssignment } = React.useContext(ImageContext);
 
 
     const search = (searchInput) => {
@@ -47,7 +47,7 @@ function Settings() {
             </div>
 
             {enableCheckBox && <div className='d-flex align-items-center justify-content-end'>
-                <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>
+                {enableTagAssignment && <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>}
                 {
                     Array.isArray(imageTypes) && imageTypes.map((type, index) => (
                         <button
