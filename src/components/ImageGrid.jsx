@@ -43,7 +43,7 @@ const ImageGrid = () => {
     return (
         <div className="image-grid">
 
-            {currentImages.slice(0, perPage).map((image, index) => (
+            {currentImages.length > 0  ? currentImages.slice(0, perPage).map((image, index) => (
                 <div key={index} 
                 className="image-item" 
                 onClick={(event) => {
@@ -103,7 +103,7 @@ const ImageGrid = () => {
                     />
                     <div className='image-label'>{image.filename}</div>
                 </div>
-            ))}
+            )): <h5><em>The search returned 0 results...</em></h5>}
         </div>
     );
 };
