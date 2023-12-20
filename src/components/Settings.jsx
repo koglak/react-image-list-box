@@ -102,11 +102,11 @@ function Settings() {
                             search(e.currentTarget.value)
                         }}
                     />
-                    <button className="add-btn" style={{backgroundColor: inputStyle["borderColor"], borderLeft: inputStyle["borderColor"]}}><FaSearch /></button>
+                    <button className="add-btn" ><FaSearch /></button>
                 </div>
 
                 {enableCheckBox && <DropdownComponent title="Tag" options={tagList} keyName="categories" />}
-                {enableCheckBox && <DropdownComponent title="Type" options={imageTypes.map(t => t.name)} keyName="type" />}
+                {enableCheckBox && Array.isArray(imageTypes) && <DropdownComponent title="Type" options={imageTypes.map(t => t.name)} keyName="type" />}
 
                 <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} tagList={tagList} />
 

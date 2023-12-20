@@ -113,7 +113,7 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible, tagList }) {
                             value={tagInput}
                             onChange={handleInputChange}
                             onKeyDown={handleInputKeyDown} />
-                        <button className="add-btn" onClick={addTag}  style={{backgroundColor: inputStyle["borderColor"], borderLeft: inputStyle["borderColor"]}}>+ Add Tag</button>
+                        <button className="add-btn" onClick={addTag} >+ Add Tag</button>
                     </div>
 
                     <span className='mt-2'>
