@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <h5>React Image List Box</h5>
+      <h1>React Image List Box</h1>
       <ImageBox
         images={images}
         setImages={setImages}
@@ -40,7 +40,7 @@ function App() {
           searchInput !== "" ? setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
         }}
         onClickPage={(showOnClickPage, setShowOnClickPage, selectedImgObj) => <ImageSettings showOnClickPage={showOnClickPage} setShowOnClickPage={setShowOnClickPage} selectedImgObj={selectedImgObj} />}
-        perPage={5}
+        perPage={10}
         imageWidth={200}
         imageHeight={200}
         boxWidth={"auto"}
