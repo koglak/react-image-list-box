@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';
-import randomColor from 'randomcolor'; // Import randomcolor
+import randomColor from 'randomcolor'; 
 import '../styles/ClassificationPopUp.css';
 import ImageContext from '../context/ImageContext';
 import { FaRegCircleQuestion } from "react-icons/fa6";

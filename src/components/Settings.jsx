@@ -1,11 +1,15 @@
 import React from 'react';
-import '../styles/Settings.css'
-import { IoImagesOutline } from "react-icons/io5";
+
 import ClassificationPopUp from './ClassificationPopUp';
-import ImageContext from '../context/ImageContext';
-import '../styles/ClassificationPopUp.css';
-import { FaSearch } from "react-icons/fa";
 import DropdownComponent from './DropdownComponent';
+
+import ImageContext from '../context/ImageContext';
+
+import '../styles/ClassificationPopUp.css';
+import '../styles/Settings.css'
+
+import { FaSearch } from "react-icons/fa";
+import { IoImagesOutline } from "react-icons/io5";
 
 function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
@@ -68,10 +72,6 @@ function Settings() {
                 <span>{selectedImages.length} Images Selected</span>
             </div>}
 
-            <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} tagList={tagList} />
-
-
-
             <div className='d-flex align-items-center' style={{height: "48px"}}>
                 <div className="input-group w-25" >
                     <input type="text"
@@ -86,6 +86,8 @@ function Settings() {
 
                 {enableCheckBox && <DropdownComponent title="Tag" options={tagList} keyName="categories" />}
                 {enableCheckBox && <DropdownComponent title="Type" options={imageTypes.map(t=>t.name)} keyName="type" />}
+
+                <ClassificationPopUp setIsClassVisible={setIsClassVisible} isClassVisible={isClassVisible} tagList={tagList} />
 
             </div>
 

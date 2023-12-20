@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/DropdownComponent.css'; // Make sure to create a corresponding CSS file
 import { FaChevronDown } from "react-icons/fa";
 import ImageContext from '../context/ImageContext';
+import '../styles/DropdownComponent.css'; 
 
 const DropdownComponent = ({ title, options, keyName }) => {
 
@@ -10,10 +10,8 @@ const DropdownComponent = ({ title, options, keyName }) => {
 
     const { filteredImages, setFilteredImages, images } = React.useContext(ImageContext);
 
-    // Toggle the dropdown open/close
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
-    // Handle checkbox changes
     const handleCheckboxChange = (item) => {
         setSelectedItems((prev) => {
             if (prev.includes(item)) {

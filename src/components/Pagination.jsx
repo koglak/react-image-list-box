@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/Pagination.css'
 import ImageContext from '../context/ImageContext'
+import '../styles/Pagination.css'
 
 function Pagination() {
 

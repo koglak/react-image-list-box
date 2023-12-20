@@ -1,8 +1,10 @@
 import React from 'react';
-import { RiDeleteBin5Line } from "react-icons/ri";
 import '../styles/ImageGrid.css'
+
 import ImageContext from '../context/ImageContext';
+
 import { IoMdPricetags } from "react-icons/io";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const ImageGrid = () => {
 
