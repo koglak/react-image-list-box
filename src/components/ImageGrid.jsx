@@ -76,7 +76,7 @@ const ImageGrid = () => {
                         <div className="category-badge-container-right">
                             <div className="category-badge">
                                 {imageTypes.find(item => item.name === image.type).icon}
-                                <span className="badge-text">Type Assigned</span>
+                                <span className="badge-text">{image.type}</span>
                             </div>
                         </div>
                     )}
