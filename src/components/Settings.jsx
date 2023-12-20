@@ -84,8 +84,8 @@ function Settings() {
                     <button className="add-btn" ><FaSearch /></button>
                 </div>
 
-                <DropdownComponent title="Tag" options={tagList} keyName="categories" />
-                <DropdownComponent title="Type" options={imageTypes.map(t=>t.name)} keyName="type" />
+                {enableCheckBox && <DropdownComponent title="Tag" options={tagList} keyName="categories" />}
+                {enableCheckBox && <DropdownComponent title="Type" options={imageTypes.map(t=>t.name)} keyName="type" />}
 
             </div>
 
