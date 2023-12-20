@@ -5,12 +5,15 @@
 }
 
 .dropdown-button {
+    height: 100%;
     cursor: pointer;
     background-color: white;
     border: 1px solid black;
 }
 
 .dropdown-content {
+    width: 100%;
+    top: 100%;
     position: absolute;
     background-color: white;
     padding: 3px;
@@ -33,4 +36,24 @@
 /* Style the checkbox label */
 .dropdown-item:hover {
     background-color: #f1f1f1;
+}
+
+/* Custom checkbox styles */
+.custom-checkbox {
+    accent-color: black; /* This changes the color of the checkbox */
+}
+
+/* When the checkbox is checked */
+.custom-checkbox:checked {
+    background-color: black; /* This changes the background color when checked */
+}
+
+/* Label style when the checkbox is checked */
+.custom-checkbox:checked + label {
+    color: black; /* This changes the label text color when the associated checkbox is checked */
+}
+
+/* Change border color for checked checkboxes */
+.custom-checkbox:checked + label::before {
+    border-color: black; /* This assumes you have a custom border set up in a ::before pseudo-element */
 }

@@ -55,6 +55,7 @@ const DropdownComponent = ({ title, options, keyName }) => {
                             <label key={item} className="dropdown-item">
                                 <input
                                     type="checkbox"
+                                    className="custom-checkbox"
                                     checked={selectedItems.includes(item)}
                                     onChange={() => handleCheckboxChange(item)}
                                 />

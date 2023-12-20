@@ -72,7 +72,7 @@ function Settings() {
 
 
 
-            <div className='d-flex align-items-center'>
+            <div className='d-flex align-items-center' style={{height: "48px"}}>
                 <div className="input-group w-25" >
                     <input type="text"
                         className="text-input"
