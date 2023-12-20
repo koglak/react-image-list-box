@@ -6,8 +6,8 @@ import { IoMdPricetags } from "react-icons/io";
 
 const ImageGrid = () => {
 
-    const { images, setImages, filteredImages, setFilteredImages, perPage, currentPage, imageWidth, imageHeight, enableCheckBox, 
-        enableDelete, setCurrentPage, selectedImages, setSelectedImages, imageTypes } = React.useContext(ImageContext);
+    const { images, setImages, filteredImages, setFilteredImages, perPage, currentPage, imageWidth, imageHeight, enableCheckBox,
+        enableDelete, setCurrentPage, selectedImages, setSelectedImages, imageTypes, setShowOnClickPage, setSelectedImgObj } = React.useContext(ImageContext);
 
     const indexOfLastImage = currentPage * perPage;
     const indexOfFirstImage = indexOfLastImage - perPage;
@@ -42,7 +42,11 @@ const ImageGrid = () => {
         <div className="image-grid">
 
             {currentImages.slice(0, perPage).map((image, index) => (
-                <div key={index} className="image-item">
+                <div key={index} 
+                className="image-item" 
+                onClick={() => {
+                    setSelectedImgObj(image)
+                    setShowOnClickPage(true)}}>
                     {enableCheckBox && (
                         <input
                             type="checkbox"

@@ -8,10 +8,13 @@ import { LuTestTube2 } from "react-icons/lu";
 import { FaRunning } from "react-icons/fa";
 import { GrValidate } from "react-icons/gr";
 
+import ImageSettings from './AdditionalComponent/ImageSettings';
+
 function App() {
 
   const [images, setImages] = React.useState(imagesData)
   const [filteredImages, setFilteredImages] = React.useState(images)
+  const [selectedImgObj, setSelectedImgObj] = React.useState({})
 
   return (
     <div className="App">
@@ -36,6 +39,7 @@ function App() {
         onSearch={(searchInput) => {
           searchInput !== "" ? setFilteredImages(images.filter(item => item.filename.includes(searchInput))) : setFilteredImages(images)
         }}
+        onClickPage={(showOnClickPage, setShowOnClickPage, selectedImgObj) => <ImageSettings showOnClickPage={showOnClickPage} setShowOnClickPage={setShowOnClickPage} selectedImgObj={selectedImgObj} />}
         perPage={5}
         imageWidth={200}
         imageHeight={200}
@@ -44,6 +48,8 @@ function App() {
         enableCheckBox={true}
         enableDelete={true}
         enableTagAssignment={true}
+        selectedImgObj={selectedImgObj}
+        setSelectedImgObj={setSelectedImgObj}
         rootStyle={{
           backgroundColor: 'white',
           border: '1px solid black',

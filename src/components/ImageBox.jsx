@@ -7,9 +7,11 @@ import ImageGrid from './ImageGrid';
 import ImageContext from '../context/ImageContext';
 
 const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageTypes, onSearch, perPage, imageWidth, imageHeight, 
-  boxWidth, boxHeight, enableCheckBox, enableDelete, enableTagAssignment, rootStyle }) => {
+  boxWidth, boxHeight, enableCheckBox, enableDelete, enableTagAssignment, onClickPage, selectedImgObj, setSelectedImgObj, rootStyle }) => {
+
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedImages, setSelectedImages] = useState([]);
+  const [showOnClickPage, setShowOnClickPage] = React.useState(false)
 
   const contextValue = {
     images,
@@ -27,9 +29,12 @@ const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageT
     filteredImages,
     setFilteredImages,
     onSearch,
-    imageTypes
+    onClickPage,
+    imageTypes,
+    setShowOnClickPage,
+    selectedImgObj,
+    setSelectedImgObj,
   };
-
 
 
   return (
@@ -40,6 +45,9 @@ const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageT
         <ImageGrid/>
 
         <Pagination/>
+
+        {showOnClickPage && onClickPage(showOnClickPage, setShowOnClickPage, selectedImgObj)}
+
       </div>
     </ImageContext.Provider>
 
