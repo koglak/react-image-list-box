@@ -39,7 +39,6 @@ function Settings() {
         setTagList(uniqueCategories)
     }, [images]);
 
-
     return (
 
         <div className='settings-box'>
@@ -50,7 +49,7 @@ function Settings() {
             <div className='d-flex align-items-center justify-content-end'>
                 <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>
                 {
-                    imageTypes.map((type, index) => (
+                   Array.isArray(imageTypes) && imageTypes.map((type, index) => (
                         <button
                             disabled={selectedImages.length === 0}
                             className='btn btn-dark ms-1'
