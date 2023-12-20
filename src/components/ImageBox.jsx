@@ -53,7 +53,7 @@ const ImageBox = ({ images, setImages, filteredImages, setFilteredImages, imageT
 
         <Pagination />
         
-        {showOnClickPage && onClickPage(showOnClickPage, setShowOnClickPage, selectedImgObj)}
+        {showOnClickPage && onClickPage && onClickPage(showOnClickPage, setShowOnClickPage, selectedImgObj)}
 
       </div>
     </ImageContext.Provider>
