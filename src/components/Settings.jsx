@@ -17,7 +17,8 @@ function Settings() {
     const [isClassVisible, setIsClassVisible] = React.useState(false)
     const [tagList, setTagList] = React.useState([])
 
-    const { selectedImages, setSelectedImages, onSearch, images, filteredImages, setImages, setFilteredImages, imageTypes, enableCheckBox, enableTagAssignment } = React.useContext(ImageContext);
+    const { selectedImages, setSelectedImages, onSearch, images, filteredImages, setImages,
+        setFilteredImages, imageTypes, enableCheckBox, enableTagAssignment, buttonStyle, inputStyle } = React.useContext(ImageContext);
 
 
     const search = (searchInput) => {
@@ -54,12 +55,17 @@ function Settings() {
             </div>
 
             {enableCheckBox && <div className='d-flex align-items-center justify-content-end'>
-                {enableTagAssignment && <button disabled={selectedImages.length === 0} className='btn btn-dark ms-1' onClick={() => setIsClassVisible(true)}>Assign Tags</button>}
+                {enableTagAssignment &&
+                    <button disabled={selectedImages.length === 0}
+                        className='btn btn-dark ms-1'
+                        style={buttonStyle}
+                        onClick={() => setIsClassVisible(true)}>Assign Tags</button>}
                 {
                     Array.isArray(imageTypes) && imageTypes.map((type, index) => (
                         <button
                             disabled={selectedImages.length === 0}
                             className='btn btn-dark ms-1'
+                            style={buttonStyle}
                             onClick={() => assignType(type.name)}
                             key={index}>
                             Set {type.name}
@@ -88,7 +94,7 @@ function Settings() {
             </div>}
 
             <div className='d-flex align-items-center' style={{ height: "48px" }}>
-                <div className="input-group w-25" >
+                <div className="input-group w-25" style={inputStyle}>
                     <input type="text"
                         className="text-input"
                         placeholder="Search"
@@ -96,7 +102,7 @@ function Settings() {
                             search(e.currentTarget.value)
                         }}
                     />
-                    <button className="add-btn" ><FaSearch /></button>
+                    <button className="add-btn" style={{backgroundColor: inputStyle["borderColor"], borderLeft: inputStyle["borderColor"]}}><FaSearch /></button>
                 </div>
 
                 {enableCheckBox && <DropdownComponent title="Tag" options={tagList} keyName="categories" />}

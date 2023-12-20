@@ -9,7 +9,7 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 const ImageGrid = () => {
 
     const { images, setImages, filteredImages, setFilteredImages, perPage, currentPage, imageWidth, imageHeight, enableCheckBox,
-        enableDelete, setCurrentPage, selectedImages, setSelectedImages, imageTypes, setShowOnClickPage, setSelectedImgObj } = React.useContext(ImageContext);
+        enableDelete, setCurrentPage, selectedImages, setSelectedImages, imageTypes, setShowOnClickPage, setSelectedImgObj, badgeStyle, checkboxStyle } = React.useContext(ImageContext);
 
     const indexOfLastImage = currentPage * perPage;
     const indexOfFirstImage = indexOfLastImage - perPage;
@@ -60,6 +60,7 @@ const ImageGrid = () => {
                         <input
                             type="checkbox"
                             className="image-checkbox"
+                            style={checkboxStyle}
                             checked={selectedImages.includes(image.filename)}
                             onChange={() => toggleSelectImage(image.filename)}
                             id={`checkbox-${index}`}
@@ -72,7 +73,8 @@ const ImageGrid = () => {
                             onClick={(event) => {
                                 event.stopPropagation(); // Prevents the event from bubbling up
                                 handleDelete(image.filename);
-                            }}                            
+                            }}
+                            style={badgeStyle}                            
                             title="Delete Image"
                         >
                             <RiDeleteBin5Line size={20} />
@@ -80,8 +82,8 @@ const ImageGrid = () => {
                     )}
 
                     {enableCheckBox && image.categories.length > 0 && (
-                        <div className="category-badge-container-left">
-                            <div className="category-badge">
+                        <div className="category-badge-container-left" >
+                            <div className="category-badge" style={badgeStyle}    >
                                 <IoMdPricetags className='category-icon' />
                                 <span className="badge-text">Tag Assigned</span>
                             </div>
@@ -96,7 +98,6 @@ const ImageGrid = () => {
                             </div>
                         </div>
                     )}
-
 
                     <img
                         src={image.src}

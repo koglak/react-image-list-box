@@ -9,7 +9,7 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible, tagList }) {
     const [selectedTags, setSelectedTags] = React.useState([]);
     const [tagInput, setTagInput] = React.useState('');
 
-    const { selectedImages, setImages, images, filteredImages, setFilteredImages } = React.useContext(ImageContext);
+    const { selectedImages, setImages, images, filteredImages, setFilteredImages, inputStyle } = React.useContext(ImageContext);
 
     const addTag = () => {
         if (!tagInput) return;
@@ -106,14 +106,14 @@ function ClassificationPopUp({ isClassVisible, setIsClassVisible, tagList }) {
                             </div>}
                     </div>
 
-                    <div className="input-group mt-2" style={inputGroupStyle}>
+                    <div className="input-group mt-2" style={{...inputGroupStyle, ...inputStyle}}>
                         <input type="text"
                             className="text-input"
                             placeholder="Tag name"
                             value={tagInput}
                             onChange={handleInputChange}
                             onKeyDown={handleInputKeyDown} />
-                        <button className="add-btn" onClick={addTag}>+ Add Tag</button>
+                        <button className="add-btn" onClick={addTag}  style={{backgroundColor: inputStyle["borderColor"], borderLeft: inputStyle["borderColor"]}}>+ Add Tag</button>
                     </div>
 
                     <span className='mt-2'>

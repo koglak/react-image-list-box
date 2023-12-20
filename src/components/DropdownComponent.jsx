@@ -8,7 +8,7 @@ const DropdownComponent = ({ title, options, keyName }) => {
     const [selectedItems, setSelectedItems] = useState([]);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-    const { filteredImages, setFilteredImages, images } = React.useContext(ImageContext);
+    const { filteredImages, setFilteredImages, images, dropdownStyle } = React.useContext(ImageContext);
 
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
 
@@ -44,7 +44,7 @@ const DropdownComponent = ({ title, options, keyName }) => {
     if(options.length > 0){
         return (
             <div className="dropdown-container">
-                <button onClick={toggleDropdown} className="dropdown-button">
+                <button onClick={toggleDropdown} className="dropdown-button" style={dropdownStyle}>
                     Select {title} <FaChevronDown size={10} />
                 </button>
                 {isDropdownOpen && (

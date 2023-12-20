@@ -53,8 +53,25 @@ function App() {
         rootStyle={{
           backgroundColor: 'white',
           border: '1px solid black',
-          borderRadius: "5px"
         }}
+        buttonStyle={{
+          border: "1px solid black",
+        }}
+        badgeStyle={{
+          backgroundColor: "black",
+          border: "1px solid black",
+          color: "white",
+        }}
+        checkboxStyle={{
+          border: "1px solid black",
+        }}
+        inputStyle={{
+          border: "1px solid black",
+        }}
+        dropdownStyle={{
+          border: "1px solid black"
+        }}
+
       />
     </div>
   );
