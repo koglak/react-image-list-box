@@ -1,9 +1,13 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import Example from './example/Example';
 
+import '../src/styles/index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const {
-  default: ImageBox,
-} = require('./components/ImageBox');
-
-
-module.exports = ImageBox;
-module.exports.default = ImageBox;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Example />
+  </React.StrictMode>
+);
