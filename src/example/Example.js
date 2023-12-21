@@ -1,23 +1,22 @@
 import React from 'react';
-import './styles/App.css'
 
-import ImageBox from './components/ImageBox'
-import { imagesData } from './data/imagesData';
+import ImageBox from '../components/ImageBox'
+import { imagesData } from '../data/imagesData';
 
 import { LuTestTube2 } from "react-icons/lu";
 import { FaRunning } from "react-icons/fa";
 import { GrValidate } from "react-icons/gr";
 
-import ImageSettings from './AdditionalComponent/ImageSettings';
+import ImageSettings from '../AdditionalComponent/ImageSettings';
 
-function App() {
+function Example() {
 
   const [images, setImages] = React.useState(imagesData)
   const [filteredImages, setFilteredImages] = React.useState(images)
   const [selectedImgObj, setSelectedImgObj] = React.useState({})
 
   return (
-    <div className="App">
+    <div className="p-4">
       <h1>React Image List Box</h1>
       <ImageBox
         images={images}
@@ -77,4 +76,4 @@ function App() {
   );
 }
 
-export default App;
+export default Example;
