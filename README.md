@@ -9,7 +9,7 @@
 
 ### Install
 
-        npm start --save react-image-list-box
+        npm install react-image-list-box
 
 or
 
